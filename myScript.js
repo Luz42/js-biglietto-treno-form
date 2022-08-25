@@ -47,6 +47,9 @@ console.log('JS OK!')
 const distance = document.getElementById('km');
 const age = document.getElementById('age');
 const button = document.getElementById('button');
+let visibleResult = document.querySelector('.container.py-5.d-none');
+// let finalPrice = document.getElementById("output").innerHTML;
+// console.log(finalPrice)
 
 // costo dei biglietti in base ad età e km
 
@@ -61,18 +64,22 @@ const button = document.getElementById('button');
 
             let fullPrice = (distanceValue * 0.21);
 
+            visibleResult.classList.remove('d-none');
+
             switch (ageValue){
 
             case (ageValue < 18):{
                 let minorDiscountPrice = (fullPrice - ((fullPrice * 20) / 100))
-                console.log('Il costo del biglietto è di ' + minorDiscountPrice.toFixed(2) + ' euro')                    }
+                document.getElementById("output").innerHTML = minorDiscountPrice.toFixed(2)
+            }
 
             case (ageValue > 65):{
                 let seniorDiscountPrice = (fullPrice - ((fullPrice * 40) / 100))
-                console.log('Il costo del biglietto è di ' + seniorDiscountPrice.toFixed(2) + ' euro')                    }
+                document.getElementById("output").innerHTML = seniorDiscountPrice.toFixed(2)
+            }
 
             default:
-                console.log('Il costo del biglietto è di ' + fullPrice.toFixed(2) + ' euro')            
+                document.getElementById("output").innerHTML = fullPrice.toFixed(2);            
             }
         }
     );

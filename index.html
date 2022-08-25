@@ -10,13 +10,69 @@
     <title>TrainLine 2.0</title>
 </head>
 <body>
-    <form action="#" method="get">
+    <!-- <form action="#" method="get">
         <label for="km">km:</label>
         <input id="km" type="number" required>
         <label for="age">age:</label>
         <input id="age" type="number" required>
         <input id="button" type="submit" value="invia">
-    </form>
+    </form> -->
+
+    <section id="tickets">
+        <!-- inserimento dati e calcolo costo  -->
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-12 text-white text-uppercase text-center">
+                    <h1>calcola il prezzo del tuo biglietto</h1>
+                </div>
+            </div>
+            <div class="row py-3 bg-white rounded-3">
+                <div class="col text-center ae-text-magenta">
+                  <label for="age" class="form-label">Inserire età</label>
+                  <input id="age" type="text" class="form-control" placeholder="Età" aria-label="Età">
+                </div>
+                <div class="col text-center ae-text-magenta">
+                  <label for="km" class="form-label">Inserire km da percorrere</label>
+                  <input id="km" type="text" class="form-control" placeholder="Km da percorrere" aria-label="Km da percorrere">
+                </div>
+                <div class="col-12 my-3 text-center">
+                    <input id="button" class="btn btn-secondary" type="button" value="Calcola">
+                </div>
+              </div>
+        </div>
+        <!-- risultato e biglietto finale -->
+        <div class="container py-5 d-none">
+            <div class="row">
+                <div class="col-12 text-white text-uppercase text-center">
+                    <h1>il tuo biglietto</h1>
+                </div>
+            </div>
+            <div class="row p-3 bg-white rounded-3">
+               <div class="col-12 text-uppercase">
+                <h5>dettaglio passeggeri</h5>
+               </div>
+               <div class="col ae-bg-grey fw-bold">
+                <h5 class="text-uppercase mb-0">nome passeggero</h5>
+                <p>Jon Snow</p>
+               </div>
+               <div class="col d-flex flex-column justify-content-between">
+                <h6 class="fw-bold">Offerta</h6>
+                <p>Biglietto Standard</p>
+               </div>
+               <div class="col d-flex flex-column justify-content-between">
+                <h6 class="fw-bold">Carrozza</h6>
+                <p>5</p>
+               </div>
+               <div class="col d-flex flex-column justify-content-between">
+                <h6 class="fw-bold">Codice CP</h6>
+                <p>92911</p>
+               </div>
+               <div class="col d-flex flex-column justify-content-between">
+                <h6 class="fw-bold">Costo biglietto</h6>
+                <p id="output"></p>
+               </div>
+        </div>
+    </section>
     
 </body>
 </html>
