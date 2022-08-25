@@ -44,8 +44,6 @@ console.log('JS OK!')
 
 
 // richiesta di informazioni
-const distance = document.getElementById('km');
-const age = document.getElementById('age');
 const button = document.getElementById('button');
 let visibleResult = document.querySelector('.container.py-5.d-none');
 // let finalPrice = document.getElementById("output").innerHTML;
@@ -56,30 +54,34 @@ let visibleResult = document.querySelector('.container.py-5.d-none');
 
     button.addEventListener('click', 
         function(){
+            const distance = document.getElementById('km');
+            const age = document.getElementById('age');
+            //bisogna inserire questi due dati all'interno dell'evento scatenante
+            //in modo che vengano presi i valori una volta azionato l'evento
             const distanceValue = distance.value;
             console.log(distanceValue + ' km da percorrere');
             
-            const ageValue = age.value;
+            let ageValue = age.value;
             console.log('età del passeggero: ' + ageValue);
 
             let fullPrice = (distanceValue * 0.21);
 
             visibleResult.classList.remove('d-none');
 
-            switch (ageValue){
 
-            case (ageValue < 18):{
-                let minorDiscountPrice = (fullPrice - ((fullPrice * 20) / 100))
-                document.getElementById("output").innerHTML = minorDiscountPrice.toFixed(2)
+            if (ageValue >= 18 && ageValue < 65) {
+                document.getElementById("output").innerHTML = fullPrice.toFixed(2);
+                
             }
 
-            case (ageValue > 65):{
-                let seniorDiscountPrice = (fullPrice - ((fullPrice * 40) / 100))
+            if (ageValue < 18) {
+                let seniorDiscountPrice = (fullPrice - ((fullPrice * 20) / 100))
                 document.getElementById("output").innerHTML = seniorDiscountPrice.toFixed(2)
             }
 
-            default:
-                document.getElementById("output").innerHTML = fullPrice.toFixed(2);            
+            if (ageValue > 65) {
+                let minorDiscountPrice = (fullPrice - ((fullPrice * 40) / 100))
+                document.getElementById("output").innerHTML = minorDiscountPrice.toFixed(2)            
             }
         }
     );
