@@ -54,35 +54,77 @@ let visibleResult = document.querySelector('.container.py-5.d-none');
 
     button.addEventListener('click', 
         function(){
+            //al click vengono presi i valori dagli input
             const distance = document.getElementById('km');
             const age = document.getElementById('age');
-            //bisogna inserire questi due dati all'interno dell'evento scatenante
-            //in modo che vengano presi i valori una volta azionato l'evento
+            const name = document.getElementById('name').value;
+
             const distanceValue = distance.value;
             console.log(distanceValue + ' km da percorrere');
             
             let ageValue = age.value;
             console.log('età del passeggero: ' + ageValue);
 
-            let fullPrice = (distanceValue * 0.21);
+            if(!isNaN(distanceValue) && distanceValue >= 0 && isNaN(name)){
 
-            visibleResult.classList.remove('d-none');
+                let fullPrice = (distanceValue * 0.21);
+
+                console.log('il costo è di:', fullPrice)
+
+                let ageCategory;
+
+                switch(ageValue){
+
+                    case 'Minorenne':{
+                        ageCategory = 20
+                        break;
+                    }
+                    case 'Over65':{
+                        ageCategory = 40
+                        break;
+                    }
+                    default:{
+                        ageCategory = 0
+                    }
+                }
+
+                console.log(ageCategory)
+
+                let discount = fullPrice * ageCategory / 100
+
+                console.log('lo sconto è di: ', discount)
+
+                let finalPrice = fullPrice - discount
+
+                console.log('il prezzo finale è di :', finalPrice)
+
+                document.querySelector('div.col.ae-bg-grey.fw-bold p').innerHTML = name.toUpperCase()
+
+                document.getElementById('category').innerHTML = `Biglietto ${ageValue}`
+
+                document.getElementById("output").innerHTML = finalPrice.toFixed(2);
 
 
-            if (ageValue >= 18 && ageValue < 65) {
-                document.getElementById("output").innerHTML = fullPrice.toFixed(2);
-                
-            }
+                // if (ageValue >= 18 && ageValue < 65) {
+                //     document.getElementById("output").innerHTML = fullPrice.toFixed(2);
+                    
+                // }
 
-            if (ageValue < 18) {
-                let seniorDiscountPrice = (fullPrice - ((fullPrice * 20) / 100))
-                document.getElementById("output").innerHTML = seniorDiscountPrice.toFixed(2)
-            }
+                // if (ageValue < 18) {
+                //     let seniorDiscountPrice = (fullPrice - ((fullPrice * 20) / 100))
+                //     document.getElementById("output").innerHTML = seniorDiscountPrice.toFixed(2)
+                // }
 
-            if (ageValue > 65) {
-                let minorDiscountPrice = (fullPrice - ((fullPrice * 40) / 100))
-                document.getElementById("output").innerHTML = minorDiscountPrice.toFixed(2)            
-            }
+                // if (ageValue > 65) {
+                //     let minorDiscountPrice = (fullPrice - ((fullPrice * 40) / 100))
+                //     document.getElementById("output").innerHTML = minorDiscountPrice.toFixed(2)            
+                // }
+
+                visibleResult.classList.remove('d-none'); 
+        }
+        else{
+            alert('inserisci i dati corretti')
+        }
         }
     );
 // prezzo del biglietto intero

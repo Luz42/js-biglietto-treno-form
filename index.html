@@ -28,12 +28,20 @@
             </div>
             <div class="row py-3 bg-white rounded-3">
                 <div class="col text-center ae-text-magenta">
-                  <label for="age" class="form-label">Inserire età</label>
-                  <input id="age" type="text" class="form-control" placeholder="Età" aria-label="Età">
+                    <label for="name" class="form-label">Inserire il nome</label>
+                    <input id="name" type="text" class="form-control" placeholder="Nome e Cognome" aria-label="Nome e Cognome">
                 </div>
                 <div class="col text-center ae-text-magenta">
                   <label for="km" class="form-label">Inserire km da percorrere</label>
                   <input id="km" type="text" class="form-control" placeholder="Km da percorrere" aria-label="Km da percorrere">
+                </div>
+                <div class="col text-center ae-text-magenta">
+                    <label for="age" class="form-label">Selezionare fascia d'età</label>
+                    <select id="age" class="form-select" placeholder = "Fascia d'età" aria-label="Età">
+                        <option value="Standard">Standard</option>
+                        <option value="Minorenne">Minorenne</option>
+                        <option value="Over65">Over 65</option>
+                    </select>
                 </div>
                 <div class="col-12 my-3 text-center">
                     <input id="button" class="btn btn-secondary" type="button" value="Calcola">
@@ -53,11 +61,11 @@
                </div>
                <div class="col ae-bg-grey fw-bold">
                 <h5 class="text-uppercase mb-0">nome passeggero</h5>
-                <p>Jon Snow</p>
+                <p></p>
                </div>
                <div class="col d-flex flex-column justify-content-between">
                 <h6 class="fw-bold">Offerta</h6>
-                <p>Biglietto Standard</p>
+                <p id="category"></p>
                </div>
                <div class="col d-flex flex-column justify-content-between">
                 <h6 class="fw-bold">Carrozza</h6>
