@@ -46,8 +46,7 @@ console.log('JS OK!')
 // richiesta di informazioni
 const button = document.getElementById('button');
 let visibleResult = document.querySelector('.container.py-5.d-none');
-// let finalPrice = document.getElementById("output").innerHTML;
-// console.log(finalPrice)
+
 
 // costo dei biglietti in base ad età e km
 
@@ -55,52 +54,51 @@ let visibleResult = document.querySelector('.container.py-5.d-none');
     button.addEventListener('click', 
         function(){
             //al click vengono presi i valori dagli input
-            const distance = document.getElementById('km');
+            const distance = document.getElementById('km').value;
             const age = document.getElementById('age');
             const name = document.getElementById('name').value;
 
-            const distanceValue = distance.value;
-            console.log(distanceValue + ' km da percorrere');
+            //console.log(distance + ' km da percorrere');
             
-            let ageValue = age.value;
-            console.log('età del passeggero: ' + ageValue);
+            let ageCategory = age.value;
+            //console.log('età del passeggero: ' + ageCategory);
 
-            if(!isNaN(distanceValue) && distanceValue >= 0 && isNaN(name)){
+            if(!isNaN(distance) && distance >= 0 && isNaN(name)){
 
-                let fullPrice = (distanceValue * 0.21);
+                let fullPrice = (distance * 0.21);
 
-                console.log('il costo è di:', fullPrice)
+                //console.log('il costo è di:', fullPrice)
 
-                let ageCategory;
+                let category;
 
-                switch(ageValue){
+                switch(ageCategory){
 
                     case 'Minorenne':{
-                        ageCategory = 20
+                        category = 20
                         break;
                     }
                     case 'Over65':{
-                        ageCategory = 40
+                        category = 40
                         break;
                     }
                     default:{
-                        ageCategory = 0
+                        category = 0
                     }
                 }
 
-                console.log(ageCategory)
+                //console.log(category)
 
-                let discount = fullPrice * ageCategory / 100
+                let discount = fullPrice * category / 100
 
-                console.log('lo sconto è di: ', discount)
+                //console.log('lo sconto è di: ', discount)
 
                 let finalPrice = fullPrice - discount
 
-                console.log('il prezzo finale è di :', finalPrice)
+                //console.log('il prezzo finale è di :', finalPrice)
 
                 document.querySelector('div.col.ae-bg-grey.fw-bold p').innerHTML = name.toUpperCase()
 
-                document.getElementById('category').innerHTML = `Biglietto ${ageValue}`
+                document.getElementById('category').innerHTML = `Biglietto ${ageCategory}`
 
                 document.getElementById("output").innerHTML = finalPrice.toFixed(2);
 
